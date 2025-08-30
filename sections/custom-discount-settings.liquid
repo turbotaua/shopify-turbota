@@ -1,0 +1,43 @@
+<script type="application/json" class="promocodes" data-id="{{ section.settings.id | handle }}">
+  {{ section.settings.codes | newline_to_br | split: '<br />' | json | remove: '\n' }}
+</script>
+<script type="application/json" class="discounted_product_ids" data-id="{{ section.settings.id | handle }}">
+  {{ section.settings.products | map: 'selected_or_first_available_variant' | map: 'id' | json }}
+</script>
+{% schema %}
+  {
+    "name": "Discount Settings",
+    "enabled_on": {
+      "groups": ["footer"]
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "id",
+        "label": "ID",
+        "info": "An identificator which you'll be using to tie these settings to a discount form"
+      },
+      {
+        "type": "product_list",
+        "id": "products",
+        "label": "Product(s)",
+        "info": "Select a product(s) which will be added to the cart along with the discount application. Chosen products should be related to discount codes listed."
+      },
+      {
+        "type": "textarea",
+        "id": "codes",
+        "label": "Discount Codes",
+        "info": "One per line"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Discount Settings"
+      }
+    ]
+  }
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+{% javascript %}
+{% endjavascript %}

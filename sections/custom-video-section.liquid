@@ -1,0 +1,408 @@
+{{ 'app.css' | asset_url | stylesheet_tag }}
+
+<div class="custom-video">
+  <div class="container full-width-row">
+    <div class="custom-video__inner">
+      <ul class="custom-video__list">
+        {% for block in section.blocks %}
+          {% if block.settings.media_type == 'video' %}
+            <li>
+              <div class="custom-video__item">
+                <div class="custom-video__title">
+                <p>{{ block.settings.video_caption }}</p>
+                </div>
+                {% if block.settings.video_poster %}
+                  <img style="display: none; src="{{ block.settings.video_poster | img_url: 'medium' }}" alt="Video Poster" class="custom-video__poster" loading="lazy">
+                {% endif %}
+                <video class="custom-video__video"
+                       width="{{ block.settings.video_width }}"
+                       height="{{ block.settings.video_height }}"
+                  {% if block.settings.video_poster %}poster="{{ block.settings.video_poster | img_url: 'grande' }}"{% endif %}
+                       {% if section.settings.autoplay == 'true' %}autoplay{% endif %}
+                {% if section.settings.autoplay == 'muted' %}autoplay muted{% endif %}
+                       loop controls
+                       style="object-fit: cover;">
+                  <source src="{{ block.settings.video_url }}">
+                </video>
+                <div class="custom-video__caption">
+                  <button class="fullscreen-btn">
+                    <img width="15" height="15" src="https://cdn.shopify.com/s/files/1/0876/9332/8687/files/fullscreen.png?v=1720685110" alt="fullscreen" loading="lazy">
+                  </button>
+                </div>
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style scoped>
+  .container{
+    padding: 34px;
+  }
+  .custom-video {
+    /* padding: 20px; */
+    background-color: #ffff;
+  {% if section.settings.background_color %}
+    background-color: {{ section.settings.background_color }};
+  {% endif %}
+   
+  }
+   .custom-video li{
+        width: 355px;
+   }
+  .custom-video__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  {% if section.settings.text_align %}
+    text-align: {{ section.settings.text_align }};
+  {% endif %}
+  }
+  .custom-video__list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+ 
+  .custom-video__title p{
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+  }
+  .custom-video__item {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+   
+  }
+  .custom-video__item video{
+    width: 100%;
+        height: 600px;
+  }
+  .custom-video__video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .custom-video__poster {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  .custom-video__caption {
+    padding: 10px;
+    /* background-color: rgba(0, 0, 0, 0.9); */
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: none;
+    transition: all 0.3s linear;
+    justify-content: end;
+    align-items: center;
+  }
+  .custom-video__list li:hover .custom-video__caption{
+    display: flex;
+    transition: all 0.5s linear;
+    width: 100%;
+  }
+  .custom-video__caption p {
+    margin: 0;
+  }
+  .fullscreen-btn {
+    padding: 8px 16px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #c85a99;
+    transition: all 0.3s ease;
+  }
+
+  .fullscreen-btn:hover {
+    background-color: rgba(0, 88, 130, 0.7);
+    transition: all 0.5s ease;
+  }
+  .fullscreen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
+  .fullscreen-video {
+    width: 400px;
+    height: 700px;
+    object-fit: cover;
+  }
+  @media only screen and (max-width: 430px) {
+    .custom-video,.container{
+     padding-left: 16px;
+    }
+.custom-video__item {
+     min-width: 80vw; 
+        scroll-snap-align: start;
+        background: #333;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+.custom-video__list{
+      display: flex;
+        overflow-x: auto; 
+        gap: 10px; 
+        padding: 10px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        width: 100vw; 
+        /* margin-left: calc((100vw - 80vw) / 2); */
+        margin: 0;
+}
+    .custom-video{
+      padding: 0px;
+    }
+    .custom-video li{
+      width: 100%;
+    }
+    .custom-video__caption{
+      display: flex;
+      width: 100%;
+    }
+  }
+.close-fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    right: 3%;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1001; 
+}
+
+.close-fullscreen-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+  .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: #e46630;
+  border: none;
+  border-radius: 8%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.play-btn:hover {
+  background: #c85a99;
+}
+
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let videos = document.querySelectorAll('.custom-video__video');
+    let fullscreenBtns = document.querySelectorAll('.fullscreen-btn');
+
+    videos.forEach(function(video) {
+        video.volume = 0.05;
+        video.controls = false;
+
+        let playBtn = document.createElement('button');
+        playBtn.classList.add('play-btn');
+        playBtn.innerText = '▶'; 
+        video.parentElement.appendChild(playBtn);
+
+        playBtn.addEventListener('click', function() {
+            video.play();
+            playBtn.style.display = 'none'; 
+        });
+
+        video.addEventListener('click', function() {
+            if (video.paused) {
+                video.play();
+                playBtn.style.display = 'none';
+            } else {
+                video.pause();
+                playBtn.style.display = 'block';
+            }
+        });
+    });
+
+    fullscreenBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            let video = this.parentElement.previousElementSibling;
+            let videoSrc = video.querySelector('source').src;
+
+            let fullscreenContainer = document.createElement('div');
+            fullscreenContainer.classList.add('fullscreen-container');
+
+            let fullscreenVideo = document.createElement('video');
+            fullscreenVideo.classList.add('fullscreen-video');
+            fullscreenVideo.src = videoSrc;
+            fullscreenVideo.volume = 0.05;
+            fullscreenVideo.controls = false;
+
+            let closeBtn = document.createElement('button');
+            closeBtn.classList.add('close-fullscreen-btn');
+            closeBtn.innerText = '×';
+
+            fullscreenContainer.appendChild(fullscreenVideo);
+            fullscreenContainer.appendChild(closeBtn);
+            document.body.appendChild(fullscreenContainer);
+
+            fullscreenVideo.play();
+
+            closeBtn.addEventListener('click', function() {
+                fullscreenVideo.pause();
+                document.body.removeChild(fullscreenContainer);
+            });
+
+            fullscreenVideo.addEventListener('click', function() {
+                if (fullscreenVideo.paused) {
+                    fullscreenVideo.play();
+                } else {
+                    fullscreenVideo.pause();
+                }
+            });
+
+            video.pause();
+        });
+    });
+});
+
+</script>
+
+{% schema %}
+{
+  "name": "Custom Video",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "autoplay",
+      "label": "Autoplay Video",
+      "options": [
+        {
+          "value": "true",
+          "label": "Autoplay with Sound"
+        },
+        {
+          "value": "muted",
+          "label": "Autoplay Muted"
+        },
+        {
+          "value": "false",
+          "label": "Do not Autoplay"
+        }
+      ],
+      "default": "false"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "media_type",
+          "label": "Media Type",
+          "default": "video"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_poster",
+          "label": "Upload or Select Video Poster"
+        },
+        {
+          "type": "text",
+          "id": "video_caption",
+          "label": "Video Caption"
+        },
+        {
+          "type": "text",
+          "id": "video_width",
+          "label": "Video Width",
+          "default": "400px"
+        },
+        {
+          "type": "text",
+          "id": "video_height",
+          "label": "Video Height",
+          "default": "700px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Video",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

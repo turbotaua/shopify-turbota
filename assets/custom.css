@@ -1,0 +1,50 @@
+.grid-view-item {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.product-grid--title {
+  flex: 1 0 auto !important;
+  min-height: unset !important;
+}
+.shopify-section[data-section-id*="discount-code-form"] .promo-inner {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.shopify-section[data-section-id*="discount-code-form"] .promo-inner h3 {
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
+.shopify-section[data-section-id*="discount-code-form"] form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.shopify-section[data-section-id*="discount-code-form"] input {
+  padding: 0.8rem 1rem;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.shopify-section[data-section-id*="discount-code-form"] button {
+  padding: 0.8rem 1.5rem;
+  font-size: 16px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.shopify-section[data-section-id*="discount-code-form"] button:hover {
+  background-color: #444;
+}

@@ -1,0 +1,15 @@
+{{ 'app.css' | asset_url | stylesheet_tag }}
+{{ 'custom-burn-duration.css' | asset_url | stylesheet_tag }}
+
+<div class="burn-duration">
+  <div class="burn-duration-text">
+    {% if product.metafields.custom.burn_duration %}
+      {{ product.metafields.custom.burn_duration | newline_to_br }}
+    {% else %}
+      <p>Немає інформації про тривалість горіння.</p>
+    {% endif %}
+  </div>
+</div>
+
+
+

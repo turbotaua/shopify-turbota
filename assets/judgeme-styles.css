@@ -1,0 +1,18 @@
+@media screen and (max-width: 768px) {
+  .jdgm-widget {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  .jdgm-widget .jdgm-review-wrapper {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}

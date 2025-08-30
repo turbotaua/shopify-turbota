@@ -1,0 +1,15 @@
+.product-visitor-counter {
+    text-align: left;
+  font-family: inherit;
+    font-size: 14px;
+  line-height: 16px;
+ margin: 0px
+}
+
+.product-visitor-counter p {
+    margin: 5px 0;
+}
+.visitor-number{
+  font-weight: 900;
+  font-family: IrpinType-Bold;
+}

@@ -1,0 +1,70 @@
+ <div class="benefits-container">
+      <ul class="benefits-box">
+
+        {% if product.metafields.custom.benefit_1 !=blank %}
+        <li class="benefits">
+        {{ product.metafields.custom.benefit_1 }}</li>
+         {% else %}
+        <li class="benefits">Strong construction</li>
+        {% endif %}
+
+        {% if product.metafields.custom.benefit_2 !=blank %}
+        <li class="benefits">
+        {{ product.metafields.custom.benefit_2 }}</li>
+        {% else %}
+         <li class="benefits">Handmade</li>
+        {% endif %}
+
+        {% if product.metafields.custom.benefit_3 !=blank %}
+        <li class="benefits">
+        {{ product.metafields.custom.benefit_3 }}</li>
+         {% else %}
+        <li class="benefits">Unique patented design</li>
+         {% endif %}
+
+        {% if product.metafields.custom.benefit_4 !=blank %}
+         <li class="benefits">
+        {{ product.metafields.custom.benefit_4 }}
+          </li>
+        {% endif %}
+        
+     {% if product.metafields.custom.benefit_5 !=blank %}
+              <li class="benefits">
+              {{ product.metafields.custom.benefit_5 }}
+            </li> 
+      {% endif %}
+
+        {% if product.metafields.custom.benefit_6 !=blank %}
+              <li class="benefits">
+              {{ product.metafields.custom.benefit_6 }}
+            </li> 
+      {% endif %}
+        
+      </ul>
+    </div>
+
+    <style>
+      .benefits-container{
+        margin: 30px 0;
+        max-width: 95%;
+      }
+
+      .benefits {
+         display: flex;
+      }
+      .benefits::before {
+        /* content:url("data:image/svg+xml;charset=UTF-8,<svg width='22' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 512 512' xml:space='preserve' fill='%23000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'> <polygon style='fill:%23000000;' points='202.624,478.016 0,291.36 70.512,214.8 191.968,326.656 431.44,33.984 512,99.904'></polygon> </g></svg>"); */
+        content:url("https://cdn.shopify.com/s/files/1/0697/8525/6239/files/icons8-check.svg?v=1707134660");
+        display: inline-block;  
+        width: 20px;
+        margin-right: 15px;
+        padding-top: 5px;
+      }
+      .benefits::marker{
+        display: none;
+      }
+
+      .benefits-box{
+        margin-left: 0;
+      }
+    </style>

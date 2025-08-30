@@ -1,0 +1,127 @@
+{% comment %} Instagram Reels Section {% endcomment %}
+
+<div class="custom-video">
+  <div class="container full-width-row">
+    <div class="custom-video__inner">
+      <ul class="custom-video__list">
+        {% for block in section.blocks %}
+          {% if block.settings.instagram_url != blank %}
+            <li>
+              <div class="custom-video__item">
+                <div class="custom-video__title">
+                  <p>{{ block.settings.video_caption }}</p>
+                </div>
+                <div class="instagram-embed-wrapper">
+                  <blockquote class="instagram-media" data-instgrm-permalink="{{ block.settings.instagram_url }}" data-instgrm-version="14" style="margin: 0 auto;"></blockquote>
+                </div>
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script async src="//www.instagram.com/embed.js"></script>
+
+<style>
+  .custom-video {
+    background-color: #fff;
+    padding: 34px;
+  }
+  .custom-video__list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .custom-video li {
+    min-width: 355px;
+  }
+  .custom-video__item {
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .custom-video__title p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .instagram-embed-wrapper {
+    width: 100%;
+    max-width: 400px;
+  }
+  @media only screen and (max-width: 430px) {
+    .custom-video {
+      padding: 16px;
+    }
+    .custom-video__list {
+      gap: 10px;
+    }
+    .custom-video__item {
+      min-width: 80vw;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Instagram Reels",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Instagram Reel",
+      "settings": [
+        {
+          "type": "url",
+          "id": "instagram_url",
+          "label": "Instagram Reel URL"
+        },
+        {
+          "type": "text",
+          "id": "video_caption",
+          "label": "Caption"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Reels Section",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "video",
+          "settings": {
+            "instagram_url": "https://www.instagram.com/reel/DLVEJIEIvAV/?igsh=NXpsMGcydHpjZG14",
+            "video_caption": "Video 1 caption"
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "instagram_url": "https://www.instagram.com/reel/DId6AaGiLKT/?igsh=MWt0cmJ5dGxkbm5hcg==",
+            "video_caption": "Video 2 caption"
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "instagram_url": "https://www.instagram.com/reel/C-IQSceNgYx/?igsh=eHZxaDF4eXJycG96",
+            "video_caption": "Video 3 caption"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

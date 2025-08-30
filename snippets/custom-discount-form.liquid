@@ -1,0 +1,41 @@
+{% if title != blank %}
+  <h2>{{ title }}</h2>
+{% endif %}
+<div class="custom-dis-form">
+  {{ description }}
+<form class="custom-discount-form isolate scroll-trigger animate--slide-in {{ additional_class }}" data-settings="{{ settings_id | handle }}">
+  <div class="field field--with-error">
+    <input type="text" name="code" class="field__input" placeholder="{{ field_label }}">
+    {% if field_label != blank %}
+      <label class="field__label">{{ field_label }}</label>
+    {% endif %}
+  </div>
+
+  {% if error != blank %}
+    <small class="contact__field-error error hidden">
+      <span class="form__message">{% render 'icon-error' %} {{ error }}</span>
+    </small>
+  {% endif %}
+
+  <div class="contact__button">
+    <button type="submit" class="button" disabled>
+      {%- assign default_btn_text = 'templates.contact.form.send' | t -%}
+      <span>{{ btn_text | default: default_btn_text }}</span>
+      <div class="loading-overlay__spinner hidden">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          class="spinner"
+          viewBox="0 0 66 66"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+        </svg>
+      </div>
+    </button>
+  </div>
+</form>
+</div>
+
+
+<script src="{{ 'custom-discount.js' | asset_url }}" defer="defer"></script>

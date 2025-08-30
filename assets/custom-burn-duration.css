@@ -1,0 +1,18 @@
+.burn-duration {
+  margin: 1rem 0;
+}
+
+.burn-duration-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.burn-duration-text {
+  white-space: pre-line;
+  line-height: 0.8; 
+  font-family: IrpinType-Bold;
+}
+
+.burn-duration-text br {
+  margin-bottom: 0; 
+}

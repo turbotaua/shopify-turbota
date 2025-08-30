@@ -1,0 +1,11 @@
+{{ 'app.css' | asset_url | stylesheet_tag }}
+{{ 'product-visitor-counter.css' | asset_url | stylesheet_tag }}
+<div class="product-visitor-counter">
+    <p class="visitor-count">
+      <img src="https://cdn.shopify.com/s/files/1/0782/2547/3809/files/eye.png?v=1728978160" width="24" height="24" loading="lazy"/> 
+      <span class="visitor-number">66</span> людей переглядає цей товара зараз</p>
+    <!-- <p>🌿 Only <span class="inventory-number">16</span> left 🌿</p> -->
+</div>
+
+
+{{ 'product-visitor-counter.js' | asset_url | script_tag }}

@@ -1,0 +1,47 @@
+{{ 'app.css' | asset_url | stylesheet_tag }}
+{{ 'custom-aroma-notes.css' | asset_url | stylesheet_tag }}
+
+<div class="aroma-notes">
+  <div class="aroma-note-section">
+    <img width="50" height="50" src="https://cdn.shopify.com/s/files/1/0782/2547/3809/files/1_09747098-d563-41e7-aed1-f38c7ce93674.png?v=1726060938" alt="Аромат" class="aroma-icon">
+    <div class="aroma-note-content">
+      <strong class="aroma-note-title">Верхні ноти:</strong>
+      <ul class="aroma-note-values">
+        {% assign upper_notes = product.metafields.custom.upper_notes | split: "," %}
+        {% for note in upper_notes %}
+          <li>{{ note | strip }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+ <hr class="aroma-divider">
+  <div class="aroma-note-section">
+    <img width="50" height="50" src="https://cdn.shopify.com/s/files/1/0782/2547/3809/files/2_82d5027d-d157-4c71-a3ba-ef83f0a6aaf4.png?v=1726060938И" alt="Аромат" class="aroma-icon">
+    <div class="aroma-note-content">
+      <strong class="aroma-note-title">Середні ноти:</strong>
+      <ul class="aroma-note-values">
+        {% assign middle_notes = product.metafields.custom.middle_notes | split: "," %}
+        {% for note in middle_notes %}
+          <li>{{ note | strip }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+ <hr class="aroma-divider">
+  <div class="aroma-note-section">
+    <img width="50" height="50" src="https://cdn.shopify.com/s/files/1/0782/2547/3809/files/3.png?v=1726060938" alt="Аромат" class="aroma-icon">
+    <div class="aroma-note-content">
+      <strong class="aroma-note-title">Базові ноти:</strong>
+      <ul class="aroma-note-values">
+        {% assign base_notes = product.metafields.custom.base_notes | split: "," %}
+        {% for note in base_notes %}
+          <li>{{ note | strip }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+ 
+</div>
+
+{{ 'custom-aroma-notes.js' | asset_url | script_tag }}

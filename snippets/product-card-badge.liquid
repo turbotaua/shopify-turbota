@@ -17,3 +17,8 @@
 	{%- endif -%}
 </span>
 {% endif %}
+
+{%- if product_card_product.tags contains 'bestseller' -%}
+<span class="badge-bestseller">Бестселер</span>
+{%- endif -%}
+

@@ -43,6 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	{% render 'social-meta-tags' %}
 
 	{{ 'app.css' | asset_url | stylesheet_tag }}
+	{{ 'custom.css' | asset_url | stylesheet_tag }}
 
 	{% render 'head-variables' %}
   <style>
